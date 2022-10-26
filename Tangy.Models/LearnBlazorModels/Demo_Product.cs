@@ -8,5 +8,13 @@ namespace Tangy.Models.LearnBlazorModels
 {
     public class Demo_Product
     {
+        public int Id { get; set; }
+
+        public string Name { get; set; } = string.Empty;
+
+        public double Price { get; set; }
+        public bool IsActive { get; set; }
+
+
     }
 }
