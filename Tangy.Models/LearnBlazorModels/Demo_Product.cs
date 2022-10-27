@@ -15,6 +15,7 @@ namespace Tangy.Models.LearnBlazorModels
         public double Price { get; set; }
         public bool IsActive { get; set; }
 
+        public List<Demo_ProductProp> ProductProperties { get; set; }
 
     }
 }
