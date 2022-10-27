@@ -22,6 +22,9 @@
 	</div>
 
 	<button class="btn btn-danger" @onclick="ButtonClickToShowMessageHandler">Button to be clicked</button>
+
+	<_GrandChildComponent ></_GrandChildComponent>
+
 </div>
 
 @code {
@@ -30,6 +33,7 @@
 
 	[Parameter]
 	public RenderFragment? ChildContent { get; set; }
+
 
 	[Parameter]
 	public RenderFragment? DangerChildContent { get; set; }

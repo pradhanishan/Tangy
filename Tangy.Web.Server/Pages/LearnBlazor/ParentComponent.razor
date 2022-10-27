@@ -2,10 +2,15 @@
 
 <h3 class="text-success"> Parent Child Relation</h3>
 
-<_ChildComponent Title="This title is passed as parameter from parent component" ButtonClickToShowMessageHandler="ShowMessage">
-	<DangerChildContent>Danger content from parent</DangerChildContent>
-	<ChildContent>Render fragment from parent</ChildContent>
-</_ChildComponent>
+<CascadingValue Value="MessageForGrandChild" Name="message">
+	<CascadingValue Value="LuckyNumber" Name="luckyNumber">
+		<_ChildComponent Title="This title is passed as parameter from parent component" ButtonClickToShowMessageHandler="ShowMessage">
+			<DangerChildContent>Danger content from parent</DangerChildContent>
+			<ChildContent>Render fragment from parent</ChildContent>
+		</_ChildComponent>
+	</CascadingValue>
+</CascadingValue>
+
 
 <_AnotherChildComponent InputAttributes="InputAttributesFromParent"></_AnotherChildComponent>
 
@@ -13,6 +18,9 @@
 
 @code {
 	public string messageText = string.Empty;
+
+	public string MessageForGrandChild = "This is a message from your parent (Parent Component)";
+	public string LuckyNumber = "7";
 
 	public Dictionary<string, object> InputAttributesFromParent { get; set; } = new Dictionary<string, object>(){
 		{ "required","required"},
