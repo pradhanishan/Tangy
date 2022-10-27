@@ -1,32 +1,24 @@
 ﻿@page "/learnblazor/demoproduct"
 
 <h2 class="text-primary">DemoProduct</h2>
-
+<p>Favorites Total : @SelectedFavoriteCount</p>
+<br />
+<p>Last selected product : @LastSelectedProduct</p>
 <div class="border p-2 mt-2" style="background-color:azure">
 	<div class="row">
 		@foreach (var prod in Products)
 		{
-			<div class="bg-light border m-2 col-5">
-				<h4 class="text-secondary">Product - @prod.Id</h4>
-				Name - @prod.Name <br />
-				Show Properties : <input type="checkbox" @bind-value="prod.IsActive" checked="@(prod.IsActive?"checked":null)" />
-
-				@if (prod.IsActive)
-				{
-					@foreach (var prodProp in prod.ProductProperties)
-					{
-						<p>@prodProp.Key - @prodProp.Value</p>
-					}
-				}
-				<br />
-				<_EditDeleteButton IsActive="@prod.IsActive"></_EditDeleteButton>
-			</div>
+			<_IndividualProduct Product="prod" FavoriteCountChangeHandler="FavoriteCountUpdate" LastSelectedProductChangeHandler="LastSelectedProductUpdate"></_IndividualProduct>
 		}
 	</div>
 </div>
 
 @code {
 	List<Demo_Product> Products = new();
+
+	private int SelectedFavoriteCount { get; set; } = 0;
+
+	private string LastSelectedProduct { get; set; } = string.Empty;
 
 	protected override void OnInitialized()
 	{
@@ -58,4 +50,22 @@
 			}
 			});
 	}
+
+	protected void FavoriteCountUpdate(bool isSelected)
+	{
+		if (isSelected)
+		{
+			SelectedFavoriteCount++;
+		}
+		else
+		{
+			SelectedFavoriteCount--;
+		}
+	}
+
+	protected void LastSelectedProductUpdate(string lastSelectedProduct)
+	{
+		LastSelectedProduct = lastSelectedProduct;
+	}
+
 }
