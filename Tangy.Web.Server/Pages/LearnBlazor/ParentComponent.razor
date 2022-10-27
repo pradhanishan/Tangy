@@ -7,10 +7,18 @@
 	<ChildContent>Render fragment from parent</ChildContent>
 </_ChildComponent>
 
+<_AnotherChildComponent InputAttributes="InputAttributesFromParent"></_AnotherChildComponent>
+
 <p><b>@messageText</b></p>
 
 @code {
 	public string messageText = string.Empty;
+
+	public Dictionary<string, object> InputAttributesFromParent { get; set; } = new Dictionary<string, object>(){
+		{ "required","required"},
+		{"placeholder","Enter name from parent"},
+		{"maxlength",5}
+	};
 
 	private void ShowMessage()
 	{
