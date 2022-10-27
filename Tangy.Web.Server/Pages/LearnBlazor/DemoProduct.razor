@@ -8,7 +8,10 @@
 	<div class="row">
 		@foreach (var prod in Products)
 		{
-			<_IndividualProduct Product="prod" FavoriteCountChangeHandler="FavoriteCountUpdate" LastSelectedProductChangeHandler="LastSelectedProductUpdate"></_IndividualProduct>
+			<_IndividualProduct Product="prod" FavoriteCountChangeHandler="FavoriteCountUpdate" LastSelectedProductChangeHandler="LastSelectedProductUpdate">
+				<Fragment1>#1</Fragment1>
+				<Fragment2>#2</Fragment2>
+			</_IndividualProduct>
 		}
 	</div>
 </div>
